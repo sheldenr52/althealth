@@ -1,46 +1,48 @@
 <?php
-include('DBaccess.php');
-$id=filter_input(INPUT_POST,'idnumber');
+require('DBaccess.php');
+$id=filter_input(INPUT_POST,'ID');
 $surname=filter_input(INPUT_POST,'surname');
 $name=filter_input(INPUT_POST,'name');
 $address=filter_input(INPUT_POST,'address');
 $code=filter_input(INPUT_POST,'code');
-$C_Tel_H=filter_input(INPUT_POST,'C_Tel_H');
-$C_Tel_W=filter_input(INPUT_POST,'C_Tel_W');
-$C_Tel_C=filter_input(INPUT_POST,'C_Tel_C');
-$Email=filter_input(INPUT_POST,'Email');
-$Reference_id=filter_input(INPUT_POST,'Reference_id');
-
- ///messed this up
-     
-        if(strlen($id)==13){
-     
-         
-         
-         $query='INSERT INTO tblclientinfo(Client_id, C_name, C_Surname, Address, Code, C_Tel_H, C_Tel_W, C_Tel_C, Email, Reference_id) VALUES(:Client_id, :C_name, :C_Surname, :Address, :Code, :C_Tel_H, :C_Tel_W, :C_Tel_C, :Email, :Reference_id)';
-                   
- // $query='INSERT INTO tblclientinfo(Client_id, C_name, C_Surname) VALUES(:Client_id, :C_name, :C_Surname)';
-                   
+$C_Tel_H=filter_input(INPUT_POST,'tel_h');
+$C_Tel_W=filter_input(INPUT_POST,'tel_w');
+$C_Tel_C=filter_input(INPUT_POST,'tel_c');  
+$Email=filter_input(INPUT_POST,'email');
+$Reference_id=filter_input(INPUT_POST,'reference_id');
+echo $id, $surname, $name, $address, $code, $Email, $Reference_id;
+ // $id="310"; $surname="Surname"; $name="name"; $address="address"; $code="4"; $Email="email";
+ //  $Reference_id="1";
 
 
-         $add=$db->prepare($query);
-         $add->bindValue(':Client_id',$id);
-                 $add->bindValue(':C_name',$name);
-                 $add->bindValue(':C_Surname',$surname);
-                 $add->bindValue(':Address',$address);
-                 $add->bindValue(':Code',$code);
-                 $add->bindValue(':C_Tel_H',$C_Tel_H);
-                 $add->bindValue(':C_Tel_W',$C_Tel_W);
-                 $add->bindValue(':C_Tel_C',$C_Tel_C);
-                 $add->bindValue(':Email',$Email);
-                 $add->bindValue(':Reference_id',$Reference_id);
+require('DBaccess.php');   
 
-                 $add->execute();
-                 $add->closeCursor();
-       
+$query = 'INSERT INTO tblclientinfo
+(Client_id, C_name, C_surname, Address, Code, C_Tel_H, C_Tel_W, C_Tel_C, C_Email, Reference_ID)
+              VALUES
+                 (:Client_id, :C_name, :C_surname, :Address, :Code, :C_Tel_H, :C_Tel_W, :C_Tel_C,
+                 :C_Email, :Reference_ID)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':Client_id', $id);
+        $statement->bindValue(':C_name', $name);
+        $statement->bindValue(':C_surname', $surname);
+        $statement->bindValue(':Address', $address);
+         $statement->bindValue(':Code', $code);
+          $statement->bindValue(':C_Tel_H', $C_Tel_H);
+             $statement->bindValue(':C_Tel_C', $C_Tel_C);
+                $statement->bindValue(':C_Tel_W', $C_Tel_W);
+                   $statement->bindValue(':C_Email', $Email);
+                      $statement->bindValue(':Reference_ID', $Reference_id);
+    $success=$statement->execute();
+    $statement->closeCursor();
+    if($success)
+    {
+        echo "a row was successfully inserted with id $id";
+    }
+    else{
+        echo "No Changes have been made";
+    }
 
-         
-        }
     
 
 
@@ -78,17 +80,17 @@ $Reference_id=filter_input(INPUT_POST,'Reference_id');
     </div>
      <div class="jumbotron" style="text-align:center;">
         <button class="btn btn-primary" type="button" style="margin:20px;" onclick="location.href='displayexistingclient.php';";>Display Existing Client</button>
-        <button class="btn btn-primary" type="button" onclick="location.href='addnewclient.php';";>Capture New Client</button>
+        <button class="btn btn-primary" type="button" onclick="location.href='addnewclient.php';";>Capture  Client</button>
         <div style="height:5000px;background-color:#b8efbd;">
             
 <!-- client form method post -->
-
+<!-- " -->
   <div class="aboutclient">
 <form action="displayexistingclient.php" method="POST" onSubmit= "return validate();">        
   <div class="container">
 <div class = "row" >
 <div class="col-6 blue">
-<p> <label for="ID">ID:</label> <input type="text" name="ID" id="ID" maxlength="13"></p>
+<p> <label for="client_id">ID:</label> <input type="text" name="ID" id="client_id" maxlength="13"></p>
 <p class="errorinput" id="iderror"></p>
 <p> <label for="surname">Surname:</label> <input type="text" name="surname" id="surname" maxlength="20"></p>
 <p class="errorinput" id="surnameerror"></p>
@@ -104,14 +106,25 @@ $Reference_id=filter_input(INPUT_POST,'Reference_id');
 
 <p> <label for="code">Code:</label> <input type="text" name="code" id="code" maxlength="4"></p>
 <p class="errorinput" id="codeerror"></p>
+
+
 <p> <label for="tel_h">Tel_H:</label> <input type="text" name="tel_h" id="tel_h" 
  onkeypress="isInputNumber(event)"></p>
 <p class="errorinput" id="tel_herror" ></p>
+
+ <p> <label for="tel_w">Tel_W:</label> <input type="text" name="tel_w" id="tel_w" 
+ onkeypress="isInputNumber(event)"></p>
+<p class="errorinput" id="tel_werror" ></p>
+
+
 <p> <label for="tel_c">Tel_C:</label> <input type="text" name="tel_c" id="tel_c" 
 	onkeypress="isInputNumber(event)"></p>
 <p class="errorinput" id="tel_cerror"></p>
+
 <p> <label for="email">Email:</label> <input type="text" name="email" id="email" maxlength="40"></p>
 <p  class="errorinput" id="emailerror"></p>
+
+
 <p> <label for="reference_id">Reference ID:</label> <input type="text" name="reference_id" id="reference_id"></p>
 <p  class="errorinput" id="reference_iderror"></p>
 
@@ -122,7 +135,7 @@ $Reference_id=filter_input(INPUT_POST,'Reference_id');
      </div>
 
 
-  <input type="submit" value="Submit">
+  <input type="submit" value="Save">
 </form>
 
         </div>
@@ -154,6 +167,14 @@ include('DBaccess.php');
    
 });
 
+new Cleave('#tel_w', {
+    delimiters:['(',   ')' ,'-','(' ,')' ,'-'  ,'('   ,')'],
+    blocks: [0,3,0,0,3,0,0,4,0],
+    uppercase: true
+   
+});
+
+
 function isInputNumber(evt){
                 
                 var ch = String.fromCharCode(evt.which);
@@ -168,9 +189,7 @@ function isInputNumber(evt){
 	// make single function return true and then return the value to onSubmit and make that file a php file that writes the values to the database
 function validate(){
 
-
-
-var idNumber=document.getElementById('ID').value;
+var idNumber=document.getElementById('client_id').value;
 
 var regId = /(((\d{2}((0[13578]|1[02])(0[1-9]|[12]\d|3[01])|(0[13456789]|1[012])(0[1-9]|[12]\d|30)|02(0[1-9]|1\d|2[0-8])))|([02468][048]|[13579][26])0229))(( |-)(\d{4})( |-)([01]8((( |-)\d{1})|\d{1}))|(\d{4}[01]8\d{1}))/;
  var idval=regId.test(idNumber);
@@ -205,7 +224,7 @@ document.getElementById('nameerror').innerHTML="Name may only contain Letters !"
 	
 }
 
-																				// Surname validation
+// 																				// Surname validation
 
 var surname=document.getElementById('surname').value;
 var regsurname = /[a-zA-Z]/;
@@ -222,7 +241,7 @@ document.getElementById('surnameerror').innerHTML="Surname may only contain Lett
 	
 }
 
-																			      // address validation
+// 																			      // address validation
 
 var addressval=document.getElementById('address').value;
 if(! addressval =="")
@@ -237,7 +256,7 @@ document.getElementById('addresserror').innerHTML="Enter an address";
 	addressval=false;
 	
 }
-																					// address validation
+// 																					// address validation
 
 
 var code=document.getElementById('code').value;
@@ -255,7 +274,7 @@ else{
 	
 }
 
-																		//telephone validation
+// 																		//telephone validation
 
 var tel_h=document.getElementById('tel_h').value;
 if(tel_h.length !==18)
@@ -271,7 +290,7 @@ else{
 	
 }
 
-																					//Cellphone validation
+// 																					//Cellphone validation
 var tel_c=document.getElementById('tel_c').value;
 if(tel_c.length !==18)
 {
@@ -299,7 +318,7 @@ else{
 
 
 
-																						// email validation
+// 																						// email validation
 var email=document.getElementById('email').value;
 
 var emailre = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
@@ -326,11 +345,14 @@ if(idval && surnameval && nameval && addressval && codeval && telval && celval &
 return true;
 
 }
-
-
+else{
+    return false;
+}
 
 
 return false;
+
+
 
 
 }
