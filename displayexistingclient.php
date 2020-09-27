@@ -50,13 +50,17 @@ $name=filter_input(INPUT_POST,'name');
 include('DBaccess.php');
 
 
- $query="select * from tblclientinfo WHERE C_name like ? AND C_surname like ?";
+ $query="select * from tblclientinfo WHERE C_name like ? AND C_surname like ? AND Client_id like ? ORDER BY 
+ Client_id ASC";
 
          $statement=$db->prepare($query);
   $qname= '%'. $name.'%' ;
        $statement->bindParam(1, $qname);
         $qsurname= '%'. $surname.'%' ;
        $statement->bindParam(2, $qsurname);
+        
+        $qID= '%'. $id.'%' ;
+       $statement->bindParam(3, $qID);
         
                  $statement->execute();
                  $result=$statement->fetchAll();
@@ -65,6 +69,17 @@ include('DBaccess.php');
                  echo $name;
 
 ?>
+    <div class="aboutclient">
+<form action="#" method="POST">
+  <label >ID</label>
+  <input type="text" name="idnumber" value="<?php echo $id?>"><br>
+  <label>Surname</label>
+  <input type="text" name="surname" value="<?php echo $surname?>"><br>
+  <label >Name</label>
+  <input type="text" name="name" value="<?php echo $name?>"><br><br>
+  <input type="submit" value="Search For Clients">
+</form>
+</div>
 
 <table>
 <tr>
@@ -101,17 +116,7 @@ include('DBaccess.php');
 <?php
 ?>
        
-        <div class="aboutclient">
-<form action="#" method="POST">
-  <label >ID</label>
-  <input type="text" name="idnumber" value="<?php echo $id?>"><br>
-  <label>Surname</label>
-  <input type="text" name="surname" value="<?php echo $surname?>"><br>
-  <label >Name</label>
-  <input type="text" name="name" value="<?php echo $name?>"><br><br>
-  <input type="submit" value="Display">
-</form>
-</div>
+    
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
