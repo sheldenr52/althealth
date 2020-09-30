@@ -125,7 +125,17 @@ $query = 'INSERT INTO tblclientinfo
 <p  class="errorinput" id="emailerror"></p>
 
 
-<p> <label for="reference_id">Reference ID:</label> <input type="text" name="reference_id" id="reference_id"></p>
+<p> <label for="reference_id">Reference ID:</label> 
+<select  name="reference_id" id="reference_id">
+  <option>1 <option>
+    <option>2 <option>
+      <option>3 <option>
+        <option>4 <option>
+          <option>5 <option>
+            <option>6 <option>
+</select>
+
+</p>
 <p  class="errorinput" id="reference_iderror"></p>
 
 

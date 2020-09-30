@@ -1,5 +1,5 @@
 <?php
-    $dsn = 'mysql:host=localhost;dbname=altmess';
+    $dsn = 'mysql:host=localhost;dbname=althdb';
     $username = 'root';
     $password = 'root';
 
