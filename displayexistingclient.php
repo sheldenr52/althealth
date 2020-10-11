@@ -1,6 +1,6 @@
 <?php
 
-$id=filter_input(INPUT_POST,'idnumber');
+$id=filter_input(INPUT_POST,'ID');
 $surname=filter_input(INPUT_POST,'surname');
 $name=filter_input(INPUT_POST,'name');
 
@@ -72,7 +72,7 @@ include('DBaccess.php');
     <div class="aboutclient">
 <form action="#" method="POST">
   <label >ID</label>
-  <input type="text" name="idnumber" value="<?php echo $id?>"><br>
+  <input type="text" name="ID" value="<?php echo $id?>"><br>
   <label>Surname</label>
   <input type="text" name="surname" value="<?php echo $surname?>"><br>
   <label >Name</label>

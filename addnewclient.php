@@ -10,10 +10,6 @@ $C_Tel_W=filter_input(INPUT_POST,'tel_w');
 $C_Tel_C=filter_input(INPUT_POST,'tel_c');  
 $Email=filter_input(INPUT_POST,'email');
 $Reference_id=filter_input(INPUT_POST,'reference_id');
-echo $id, $surname, $name, $address, $code, $Email, $Reference_id;
- // $id="310"; $surname="Surname"; $name="name"; $address="address"; $code="4"; $Email="email";
- //  $Reference_id="1";
-
 
 require('DBaccess.php');   
 
@@ -86,7 +82,7 @@ $query = 'INSERT INTO tblclientinfo
 <!-- client form method post -->
 <!-- " -->
   <div class="aboutclient">
-<form action="displayexistingclient.php" method="POST" onSubmit= "return validate();">        
+<form action="addnewclient.php" method="POST" onSubmit= "return validate();">        
   <div class="container">
 <div class = "row" >
 <div class="col-6 blue">
@@ -127,12 +123,12 @@ $query = 'INSERT INTO tblclientinfo
 
 <p> <label for="reference_id">Reference ID:</label> 
 <select  name="reference_id" id="reference_id">
-  <option>1 <option>
-    <option>2 <option>
-      <option>3 <option>
-        <option>4 <option>
-          <option>5 <option>
-            <option>6 <option>
+  <option value="1"> Website <option>
+    <option value="2"> Word by mouth<option>
+      <option value="3"> Friend<option>
+        <option value="4"> Facebook<option>
+          <option value="5">Myself<option>
+            <option value="6"> Other<option>
 </select>
 
 </p>
