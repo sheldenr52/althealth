@@ -1,0 +1,89 @@
+[33mcommit fb1e3d6542084b7584c76e78688f4f60d6ec36dd[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Sun Oct 11 20:26:53 2020 +0200
+
+     Fixed bug with adding client. Adds perfectly. Schema back to altmess
+
+[33mcommit 2d51fcb24fcd08d4a16c75e1998760d16ed57bbf[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Wed Sep 30 20:42:18 2020 +0200
+
+    backup and restore implemented, with bugs removed. Database Schema changed from altmess to althdb
+
+[33mcommit 105865589ad6d9da2bff1f6f4a79f0286f577032[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Wed Sep 30 08:52:04 2020 +0200
+
+     added top ten clients page
+
+[33mcommit 0dbe534f4b9e076853c0a5db2de12c8e6999656d[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Tue Sep 29 20:46:31 2020 +0200
+
+     low stock levels now available
+
+[33mcommit d044d7da2a4ff75eb74b1e2f052142124af5cd6e[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Tue Sep 29 20:10:48 2020 +0200
+
+     added client birthday tab
+
+[33mcommit 45abab15ac5c10f144d7c8cf6a10f30061fa6b25[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Tue Sep 29 18:59:54 2020 +0200
+
+    unpaid invoice report with date filter has been added, as well as a misreports submenu
+
+[33mcommit cad703c64d073454be10eed1b0fed25bc1dde56b[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Sun Sep 27 19:30:57 2020 +0200
+
+    implemented Dashboard with bootstrap
+
+[33mcommit a3f493c8347bb03c64e7b9a2c6bbef7d65839b1c[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Sun Sep 27 16:23:28 2020 +0200
+
+    More flexible searching. Like statement added on ID field;
+
+[33mcommit ddfeac0afa1dc5a7ae475fb870484171e27fe6b4[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Sun Sep 27 16:21:34 2020 +0200
+
+     add new client now has verification and saves to the database;
+
+[33mcommit 9226587bca173c896fc17b443ea70eb2455f4b20[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Sat Sep 26 11:25:03 2020 +0200
+
+    added files add new client.php, displayexistingclient.php, DBaccess.php, cleave.js files
+
+[33mcommit f43403cebbc646dcd9ca774557fb650bee6c9576[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Sat Jul 11 01:39:34 2020 +0200
+
+    added input GUIs named index.php and new client.php
+
+[33mcommit d37e8cdcde45aaf18f7b15520ef8508239e86018[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Sun Jul 5 10:32:39 2020 +0200
+
+    new file added on July fifth
+
+[33mcommit 5c66717b395ba4ef856c639d97bdc9bb9d55d581[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Fri May 29 23:26:58 2020 +0200
+
+    Update README.md
+
+[33mcommit 8a9ccd4c33c18707770030b455752151a4444faf[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Fri May 29 23:22:50 2020 +0200
+
+    Create index.html
+
+[33mcommit 37cee8590678ac87c7938d2c766374c5fce426ca[m
+Author: sheldenr52 <66136979+sheldenr52@users.noreply.github.com>
+Date:   Fri May 29 20:27:40 2020 +0200
+
+    Initial commit
